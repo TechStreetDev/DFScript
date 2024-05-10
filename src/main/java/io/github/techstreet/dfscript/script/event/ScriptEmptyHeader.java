@@ -33,7 +33,7 @@ public class ScriptEmptyHeader extends ScriptHeader {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Literally can never be triggered...").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Literally can never be triggered...").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
 
         emptyIcon.getSubNbt("display")
                 .put("Lore", lore);

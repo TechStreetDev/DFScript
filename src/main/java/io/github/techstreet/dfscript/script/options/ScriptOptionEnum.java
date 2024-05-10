@@ -65,7 +65,7 @@ public enum ScriptOptionEnum {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(description)
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(description)
                 .fillStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false))
         )));
 

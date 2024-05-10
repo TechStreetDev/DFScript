@@ -35,7 +35,7 @@ public class ComponentUtil {
                     s = s.withFormatting(Formatting.byCode(col.charAt(1)));
                 } else {
                     s = Style.EMPTY.withColor(
-                        TextColor.parse("#" + col.replaceAll("§", "").substring(1)));
+                        TextColor.parse("#" + col.replaceAll("§", "").substring(1)).getOrThrow(false, (h) -> {throw new IllegalArgumentException(h);}));
                 }
                 lastIndex = matcher.end();
             }

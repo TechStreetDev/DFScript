@@ -21,10 +21,10 @@ public class BlendableTexturedButtonWidget extends TexturedButtonWidget {
 //    }
 
     @Override
-    public void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
+    public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
         RenderSystem.clearColor(1.0F, 1.0F, 1.0F, this.alpha);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        super.renderButton(context, mouseX, mouseY, delta);
+        super.renderWidget(context, mouseX, mouseY, delta);
     }
 }

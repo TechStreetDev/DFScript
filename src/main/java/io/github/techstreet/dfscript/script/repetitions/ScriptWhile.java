@@ -39,7 +39,7 @@ public class ScriptWhile extends ScriptRepetition {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Repeats while a condition is true.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Repeats while a condition is true.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
 
         whileIcon.getSubNbt("display")
                 .put("Lore", lore);
@@ -66,11 +66,11 @@ public class ScriptWhile extends ScriptRepetition {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Repeats while a condition is true.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Repeats while a condition is true.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
 
         for (Text txt : condition.getLore()) {
-            lore.add(NbtString.of(Text.Serializer.toJson(txt)));
+            lore.add(NbtString.of(Text.Serialization.toJsonString(txt)));
         }
 
         icon.getSubNbt("display")

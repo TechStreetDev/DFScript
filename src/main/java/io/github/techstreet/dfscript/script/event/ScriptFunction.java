@@ -57,19 +57,19 @@ public class ScriptFunction extends ScriptHeader {
 
         if(description != "") {
             for (String descriptionLine: description.split("\n")) {
-                lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(descriptionLine)
+                lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(descriptionLine)
                         .fillStyle(Style.EMPTY
                                 .withColor(Formatting.GRAY)
                                 .withItalic(false)))));
             }
 
             if(argList.size() > 0)
-                lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+                lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
         }
 
         for (ScriptActionArgument arg : argList) {
             for (Text txt : arg.text()) {
-                lore.add(NbtString.of(Text.Serializer.toJson(txt)));
+                lore.add(NbtString.of(Text.Serialization.toJsonString(txt)));
             }
         }
 

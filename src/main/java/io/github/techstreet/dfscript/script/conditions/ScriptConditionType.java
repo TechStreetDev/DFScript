@@ -337,7 +337,7 @@ public enum ScriptConditionType {
         NbtList lore = new NbtList();
 
         for (Text txt : getLore()) {
-            lore.add(NbtString.of(Text.Serializer.toJson(txt)));
+            lore.add(NbtString.of(Text.Serialization.toJsonString(txt)));
         }
 
         item.getSubNbt("display")

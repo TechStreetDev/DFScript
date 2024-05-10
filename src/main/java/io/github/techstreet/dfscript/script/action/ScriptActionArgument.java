@@ -159,7 +159,7 @@ public class ScriptActionArgument {
         }
 
         if(optional() || plural()) {
-            lore.add(NbtString.of(Text.Serializer.toJson(
+            lore.add(NbtString.of(Text.Serialization.toJsonString(
                     Text.literal((optional() ? (plural() ? "Optional & " : "Optional") : "")
                                     + (plural() ? "Plural" : ""))
                             .fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY))
@@ -167,7 +167,7 @@ public class ScriptActionArgument {
         }
 
         if(!(defaultValue() instanceof ScriptUnknownValue)) {
-            lore.add(NbtString.of(Text.Serializer.toJson(
+            lore.add(NbtString.of(Text.Serialization.toJsonString(
                     Text.literal("Default: "+defaultValue().formatAsText())
                             .fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY))
             )));
@@ -254,7 +254,7 @@ public class ScriptActionArgument {
             itemStack.setCustomName(Text.literal(name).setStyle(Style.EMPTY.withColor(Formatting.WHITE).withItalic(false)));
 
             NbtList lore = new NbtList();
-            lore.add(NbtString.of(Text.Serializer.toJson(text())));
+            lore.add(NbtString.of(Text.Serialization.toJsonString(text())));
             itemStack.getSubNbt("display").put("Lore", lore);
 
             return itemStack;
