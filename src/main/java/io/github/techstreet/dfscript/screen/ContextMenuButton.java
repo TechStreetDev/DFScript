@@ -1,7 +1,6 @@
 package io.github.techstreet.dfscript.screen;
 
 import io.github.techstreet.dfscript.DFScript;
-import io.github.techstreet.dfscript.screen.script.ScriptEditScreen;
 
 public class ContextMenuButton {
     String name;

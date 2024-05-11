@@ -1,10 +1,11 @@
 package io.github.techstreet.dfscript.util.chat;
 
 import io.github.techstreet.dfscript.features.MessageType;
+import net.minecraft.text.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import net.minecraft.text.Text;
 
 /**
  * A utility class to grab the next X chat messages.

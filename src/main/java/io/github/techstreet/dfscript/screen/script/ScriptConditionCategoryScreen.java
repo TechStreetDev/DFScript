@@ -15,7 +15,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class ScriptConditionCategoryScreen extends CScreen {
-
     private static final int size;
 
     static {
@@ -56,6 +55,6 @@ public class ScriptConditionCategoryScreen extends CScreen {
 
     @Override
     public void close() {
-        DFScript.MC.setScreen(new ScriptAddPartScreen(script, snippet, insertIndex, ScriptActionCategory.CONDITIONS));
+
     }
 }

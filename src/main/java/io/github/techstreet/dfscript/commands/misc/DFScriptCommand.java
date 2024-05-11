@@ -7,10 +7,10 @@ import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.commands.Command;
 import io.github.techstreet.dfscript.commands.arguments.StringFuncArgumentType;
 import io.github.techstreet.dfscript.event.system.EventManager;
-import io.github.techstreet.dfscript.screen.script.ScriptListScreen;
+import io.github.techstreet.dfscript.features.AuthHandler;
+import io.github.techstreet.dfscript.screen.dfscript.DFScriptScreen;
 import io.github.techstreet.dfscript.script.Script;
 import io.github.techstreet.dfscript.script.ScriptManager;
-import io.github.techstreet.dfscript.script.values.ScriptValue;
 import io.github.techstreet.dfscript.script.values.ScriptVariable;
 import io.github.techstreet.dfscript.util.chat.ChatUtil;
 import java.util.List;
@@ -19,22 +19,22 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 
 import static io.github.techstreet.dfscript.commands.arguments.StringFuncArgumentFunctions.SCRIPTS;
 
-public class ScriptsCommand implements Command {
+public class DFScriptCommand implements Command {
 
     @Override
     public void register(CommandDispatcher<FabricClientCommandSource> cd) {
         cd.register(
-            literal("scripts")
+            literal("dfscript")
                 .executes(ctx -> {
-                    DFScript.MC.send(() -> DFScript.MC.setScreen(new ScriptListScreen(true)));
+                    DFScript.MC.send(() -> DFScript.MC.setScreen(new DFScriptScreen()));
                     return 0;
                 })
                 .then(literal("reload")
-                    .executes(ctx -> {
-                        ScriptManager.getInstance().reload();
-                        ChatUtil.info("Scripts reloaded!");
-                        return 0;
-                    })
+                        .executes(ctx -> {
+                            AuthHandler.updateScripts();
+                            ChatUtil.info("Scripts updated and reloaded!");
+                            return 0;
+                        })
                 )
                 .then(literal("vars")
                     .then(argument("script", new StringFuncArgumentType(SCRIPTS, false)
@@ -92,7 +92,7 @@ public class ScriptsCommand implements Command {
     @Override
     public String getDescription() {
         return """
-                [blue]/scripts[reset]
+                [blue]/dfscript[reset]
 
                 Opens a GUI to edit custom DFScript scripts.
                 """;
@@ -100,6 +100,6 @@ public class ScriptsCommand implements Command {
 
     @Override
     public String getName() {
-        return "/scripts";
+        return "/dfscript";
     }
 }

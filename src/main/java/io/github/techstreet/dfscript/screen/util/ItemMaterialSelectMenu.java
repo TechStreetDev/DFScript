@@ -2,10 +2,11 @@ package io.github.techstreet.dfscript.screen.util;
 
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.screen.CReloadableScreen;
-import io.github.techstreet.dfscript.screen.CScreen;
-import io.github.techstreet.dfscript.screen.widget.*;
+import io.github.techstreet.dfscript.screen.widget.CItem;
+import io.github.techstreet.dfscript.screen.widget.CScrollPanel;
+import io.github.techstreet.dfscript.screen.widget.CTextField;
+import io.github.techstreet.dfscript.screen.widget.CTexturedButton;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;

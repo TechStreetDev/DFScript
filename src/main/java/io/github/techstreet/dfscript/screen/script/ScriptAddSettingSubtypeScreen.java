@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ScriptAddSettingSubtypeScreen extends CScreen {
-
     private int width;
     private int height;
     private static final List<ScriptOptionEnum> primitiveTypes;

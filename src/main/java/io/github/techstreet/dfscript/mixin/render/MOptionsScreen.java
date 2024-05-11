@@ -1,7 +1,8 @@
 package io.github.techstreet.dfscript.mixin.render;
 
 import io.github.techstreet.dfscript.DFScript;
-import io.github.techstreet.dfscript.screen.script.ScriptListScreen;
+import io.github.techstreet.dfscript.screen.dfscript.DFScriptScreen;
+import io.github.techstreet.dfscript.screen.dfscript.ScriptListScreen;
 import io.github.techstreet.dfscript.util.render.BlendableTexturedButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
@@ -33,7 +34,7 @@ public class MOptionsScreen extends Screen {
     @Inject(method = "init()V", at = @At("RETURN"))
     protected void init(CallbackInfo callbackInfo) {
         this.addDrawableChild(new BlendableTexturedButtonWidget(5, 5, 20, 20, identifier_main, identifier_main_highlight, (button) -> {
-            ScriptListScreen screen = new ScriptListScreen(DFScript.MC.player != null);
+            DFScriptScreen screen = new DFScriptScreen();
             DFScript.MC.setScreen(screen);
         }));
     }

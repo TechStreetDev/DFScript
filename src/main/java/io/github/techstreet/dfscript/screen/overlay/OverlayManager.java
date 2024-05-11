@@ -3,7 +3,6 @@ package io.github.techstreet.dfscript.screen.overlay;
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.loader.Loadable;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;

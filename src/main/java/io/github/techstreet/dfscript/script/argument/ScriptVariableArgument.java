@@ -58,7 +58,7 @@ public final class ScriptVariableArgument implements ScriptArgument {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(scope.getName())));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(scope.getName())));
 
         icon.getSubNbt("display").put("Lore", lore);
 

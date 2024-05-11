@@ -2,6 +2,7 @@ package io.github.techstreet.dfscript.screen.script;
 
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.screen.CScreen;
+import io.github.techstreet.dfscript.screen.dfscript.ScriptListScreen;
 import io.github.techstreet.dfscript.screen.widget.*;
 import io.github.techstreet.dfscript.script.Script;
 import io.github.techstreet.dfscript.script.ScriptManager;
@@ -134,13 +135,8 @@ public class ScriptSettingsScreen extends CScreen {
 
     @Override
     public void close() {
-        if (owned) {
-            DFScript.MC.setScreen(new ScriptEditScreen(script));
-        }
-        else {
-            ScriptManager.getInstance().saveScript(script);
-            DFScript.MC.setScreen(new ScriptListScreen(true));
-        }
+        ScriptManager.getInstance().saveScript(script);
+        DFScript.MC.setScreen(new ScriptListScreen(true));
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {

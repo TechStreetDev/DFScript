@@ -1,12 +1,13 @@
 package io.github.techstreet.dfscript.util.chat;
 
 import io.github.techstreet.dfscript.DFScript;
-import java.awt.Color;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
+
+import java.awt.*;
 
 public class ChatUtil {
 

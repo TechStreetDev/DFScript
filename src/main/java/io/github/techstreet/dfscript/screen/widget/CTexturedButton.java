@@ -1,10 +1,10 @@
 package io.github.techstreet.dfscript.screen.widget;
 
 import io.github.techstreet.dfscript.util.RenderUtil;
-import java.awt.Rectangle;
-
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.util.math.MatrixStack;
+
+import java.awt.*;
 
 public class CTexturedButton extends CButton {
 

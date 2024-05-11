@@ -2,7 +2,6 @@ package io.github.techstreet.dfscript.screen.widget;
 
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.util.RenderUtil;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -13,7 +12,6 @@ import net.minecraft.text.Text;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
-import java.util.Optional;
 import java.util.function.Consumer;
 
 public class CItem implements CWidget {
@@ -44,8 +42,7 @@ public class CItem implements CWidget {
         stack.push();
         stack.translate(x, y, 0);
         RenderUtil.renderGuiItem(context, item);
-        if(countText != null)
-        {
+        if (countText != null) {
             stack.translate(4, 4, 0);
             stack.scale(0.5f, 0.5f, 0.5f);
             context.drawText(DFScript.MC.textRenderer, countText, 0, 0, 0xFFFFFFFF, true);

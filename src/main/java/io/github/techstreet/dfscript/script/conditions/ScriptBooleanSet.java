@@ -43,14 +43,14 @@ public class ScriptBooleanSet extends ScriptParametrizedPart {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Sets a variable to the result of a condition.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Sets a variable to the result of a condition.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
 
         MutableText t = ScriptActionArgument.ScriptActionArgumentType.VARIABLE.text();
         t.append(Text.literal(" - ").fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY)))
                 .append(Text.literal("Result").fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)));
 
-        lore.add(NbtString.of(Text.Serializer.toJson(t)));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(t)));
 
         booleanSetIcon.getSubNbt("display")
                 .put("Lore", lore);
@@ -115,18 +115,18 @@ public class ScriptBooleanSet extends ScriptParametrizedPart {
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Sets a variable to the result of a condition.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Sets a variable to the result of a condition.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
 
         MutableText t = ScriptActionArgument.ScriptActionArgumentType.VARIABLE.text();
         t.append(Text.literal(" - ").fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY)))
          .append(Text.literal("Result").fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE)));
 
-        lore.add(NbtString.of(Text.Serializer.toJson(t)));
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(t)));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
 
         for (Text txt : condition.getLore()) {
-            lore.add(NbtString.of(Text.Serializer.toJson(txt)));
+            lore.add(NbtString.of(Text.Serialization.toJsonString(txt)));
         }
 
         icon.getSubNbt("display")

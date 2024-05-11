@@ -3,9 +3,10 @@ package io.github.techstreet.dfscript.util;
 import io.github.techstreet.dfscript.event.TickEvent;
 import io.github.techstreet.dfscript.event.system.EventManager;
 import io.github.techstreet.dfscript.loader.Loadable;
+import org.apache.commons.lang3.tuple.MutablePair;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.lang3.tuple.MutablePair;
 
 public class Scheduler implements Loadable {
 

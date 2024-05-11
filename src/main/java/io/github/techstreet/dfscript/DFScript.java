@@ -61,13 +61,14 @@ public class DFScript implements ModInitializer {
         loader.load(new Scheduler());
         loader.load(new UpdateAlerts());
         loader.load(new OverlayManager());
+        loader.load(new ActiondumpHandler());
 
         LOGGER.info("Initialized");
     }
 
     public void onClose() {
         LOGGER.info("Closing...");
-
+        AuthHandler.deauth();
         LOGGER.info("Closed.");
     }
 }

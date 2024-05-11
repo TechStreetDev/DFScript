@@ -1,7 +1,7 @@
 package io.github.techstreet.dfscript.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.techstreet.dfscript.commands.misc.ScriptsCommand;
+import io.github.techstreet.dfscript.commands.misc.DFScriptCommand;
 import io.github.techstreet.dfscript.loader.Loadable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class CommandManager implements Loadable {
 
     @Override
     public void load() {
-        commands.add(new ScriptsCommand());
+        commands.add(new DFScriptCommand());
 
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> attachTo(dispatcher));
     }

@@ -1,8 +1,8 @@
 package io.github.techstreet.dfscript.screen.widget;
 
-import java.awt.Rectangle;
-
 import net.minecraft.client.gui.DrawContext;
+
+import java.awt.*;
 
 public interface CWidget {
 

@@ -1,7 +1,13 @@
 package io.github.techstreet.dfscript.util;
 
 import com.google.gson.JsonArray;
-import java.awt.Toolkit;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
+import net.minecraft.util.Formatting;
+
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.lang.reflect.Field;
@@ -10,11 +16,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.text.TextColor;
-import net.minecraft.util.Formatting;
 
 public class StringUtil {
     public static final Regex STRIP_CHARS_PATTERN = Regex.of("(^\\s+|\\s+$)");

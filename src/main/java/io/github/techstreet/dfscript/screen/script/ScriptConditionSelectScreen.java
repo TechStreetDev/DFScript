@@ -41,7 +41,6 @@ public class ScriptConditionSelectScreen extends CScreen {
             CItem item = new CItem(x, y, type.getIcon(""));
             item.setClickListener((btn) -> {
                 snippet.add(insertIndex, partCreator.apply(new ScriptBuiltinCondition(type)));
-                DFScript.MC.setScreen(new ScriptEditScreen(script));
             });
             widgets.add(item);
             x += 10;

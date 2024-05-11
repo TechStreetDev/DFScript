@@ -37,19 +37,23 @@ public enum ScriptEventType {
     RECEIVE_SOUND(RecieveSoundEvent.class, "OnReceiveSound", "Executed when a player receives a sound", Items.NAUTILUS_SHELL);
 
     private final String name;
+    private final String description;
+    private final Item item;
     private final ItemStack icon;
     private final Class<? extends Event> codeutilitiesEvent;
 
     ScriptEventType(Class<? extends Event> codeutilitiesEvent, String name, String description, Item item) {
         this.codeutilitiesEvent = codeutilitiesEvent;
         this.name = name;
+        this.description = description;
+        this.item = item;
         icon = new ItemStack(item);
         icon.setCustomName(Text.literal(name)
             .setStyle(Style.EMPTY
                 .withColor(Formatting.WHITE)
                 .withItalic(false)));
         NbtList lore = new NbtList();
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(description)
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(description)
             .fillStyle(Style.EMPTY
                 .withColor(Formatting.GRAY)
                 .withItalic(false)))));
@@ -63,6 +67,14 @@ public enum ScriptEventType {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Item getItem() {
+        return item;
     }
 
     public Class<? extends Event> getCodeutilitiesEvent() {

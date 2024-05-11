@@ -39,7 +39,7 @@ public class ScriptBranch extends ScriptParametrizedPart implements ScriptScopeP
 
         NbtList lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Closes the current code block.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Closes the current code block.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
 
         closeBracketIcon.getSubNbt("display")
                 .put("Lore", lore);
@@ -51,7 +51,7 @@ public class ScriptBranch extends ScriptParametrizedPart implements ScriptScopeP
 
         lore = new NbtList();
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Executes if the last IF condition failed.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Executes if the last IF condition failed.").setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(false)))));
 
         elseIcon.getSubNbt("display")
                 .put("Lore", lore);

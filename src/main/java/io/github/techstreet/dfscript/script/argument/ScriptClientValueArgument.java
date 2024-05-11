@@ -168,18 +168,22 @@ public enum ScriptClientValueArgument implements ScriptArgument {
     });
 
     private final String name;
+    private final String description;
+    private final Item item;
     private final ItemStack icon;
     private final Function<ScriptTask, ScriptValue> consumer;
     private final ScriptActionArgumentType type;
 
     ScriptClientValueArgument(String name, String description, Item type, ScriptActionArgumentType varType, Function<ScriptTask, ScriptValue> consumer) {
         this.name = name;
+        this.description = description;
+        this.item = type;
         this.icon = new ItemStack(type);
         icon.setCustomName(Text.literal(name)
             .fillStyle(Style.EMPTY
                 .withItalic(false)));
         NbtList lore = new NbtList();
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(description)
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(description)
             .fillStyle(Style.EMPTY
                 .withColor(Formatting.GRAY)
                 .withItalic(false)))));
@@ -187,6 +191,18 @@ public enum ScriptClientValueArgument implements ScriptArgument {
             .put("Lore", lore);
         this.consumer = consumer;
         this.type = varType;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ScriptActionArgumentType getType() {
+        return type;
     }
 
     public String getName() {

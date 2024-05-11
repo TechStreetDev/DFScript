@@ -3,6 +3,7 @@ package io.github.techstreet.dfscript.util;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.github.techstreet.dfscript.DFScript;
+
 import java.io.IOException;
 
 public class VersionUtil {

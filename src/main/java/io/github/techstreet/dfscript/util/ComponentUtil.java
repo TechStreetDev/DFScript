@@ -1,12 +1,13 @@
 package io.github.techstreet.dfscript.util;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ComponentUtil {
 
@@ -34,7 +35,7 @@ public class ComponentUtil {
                     s = s.withFormatting(Formatting.byCode(col.charAt(1)));
                 } else {
                     s = Style.EMPTY.withColor(
-                        TextColor.parse("#" + col.replaceAll("§", "").substring(1)));
+                        TextColor.parse("#" + col.replaceAll("§", "").substring(1)).getOrThrow(false, (h) -> {throw new IllegalArgumentException(h);}));
                 }
                 lastIndex = matcher.end();
             }

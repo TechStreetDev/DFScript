@@ -1,11 +1,11 @@
 package io.github.techstreet.dfscript.mixin.render;
 
 import io.github.techstreet.dfscript.DFScript;
-import io.github.techstreet.dfscript.screen.script.ScriptListScreen;
+import io.github.techstreet.dfscript.screen.dfscript.DFScriptScreen;
+import io.github.techstreet.dfscript.screen.dfscript.ScriptListScreen;
 import io.github.techstreet.dfscript.util.render.BlendableTexturedButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,7 +28,7 @@ public class MMultiplayerScreen extends Screen {
     @Inject(at = @At("HEAD"), method = "init", cancellable = true)
     private void init(CallbackInfo ci) {
         this.addDrawableChild(new BlendableTexturedButtonWidget(5, 5, 20, 20, identifier_main, identifier_main_highlight, (button) -> {
-            ScriptListScreen screen = new ScriptListScreen(false);
+            DFScriptScreen screen = new DFScriptScreen();
             DFScript.MC.setScreen(screen);
         }));
     }

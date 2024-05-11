@@ -6,17 +6,15 @@ import io.github.techstreet.dfscript.event.*;
 import io.github.techstreet.dfscript.event.system.EventManager;
 import io.github.techstreet.dfscript.util.hypercube.HypercubeRank;
 import io.github.techstreet.dfscript.util.hypercube.HypercubeUtil;
-import java.net.InetSocketAddress;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.ClientConnection;
-import net.minecraft.network.packet.s2c.play.*;
-import net.minecraft.network.packet.s2c.common.*;
-import net.minecraft.text.Text;
+import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
+import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
+import net.minecraft.network.packet.s2c.play.TeamS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class MClientPlayNetworkHandler {

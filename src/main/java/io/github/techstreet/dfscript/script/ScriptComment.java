@@ -4,10 +4,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import io.github.techstreet.dfscript.screen.script.ScriptEditScreen;
 import io.github.techstreet.dfscript.screen.widget.CItem;
 import io.github.techstreet.dfscript.screen.widget.CScrollPanel;
-import io.github.techstreet.dfscript.screen.widget.CTextField;
 import io.github.techstreet.dfscript.script.execution.ScriptTask;
 import io.github.techstreet.dfscript.script.render.ScriptPartRender;
 import io.github.techstreet.dfscript.script.render.ScriptPartRenderDynamicElement;
@@ -17,7 +15,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 public class ScriptComment extends ScriptPart {
 
@@ -51,11 +48,6 @@ public class ScriptComment extends ScriptPart {
 
             panel.add(new CItem(5+indent*5, y, new ItemStack(Items.MAP).setCustomName(Text.literal("Comment").setStyle(Style.EMPTY.withItalic(false)))));
 
-            CTextField cTextField = new CTextField(getComment(),15+indent*5, y-1, ScriptEditScreen.width-(15+indent*5)-5, 10, true);
-
-            cTextField.setChangedListener(() -> setComment(cTextField.getText()));
-
-            panel.add(cTextField);
             return y+10;
         }));
     }

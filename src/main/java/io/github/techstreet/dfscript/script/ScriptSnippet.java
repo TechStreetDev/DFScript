@@ -3,9 +3,6 @@ package io.github.techstreet.dfscript.script;
 import com.google.gson.*;
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.screen.ContextMenuButton;
-import io.github.techstreet.dfscript.screen.script.ScriptEditPartScreen;
-import io.github.techstreet.dfscript.screen.script.ScriptEditScreen;
-import io.github.techstreet.dfscript.screen.script.ScriptPartCategoryScreen;
 import io.github.techstreet.dfscript.screen.widget.CButton;
 import io.github.techstreet.dfscript.screen.widget.CScrollPanel;
 import io.github.techstreet.dfscript.screen.widget.CText;
@@ -17,7 +14,6 @@ import io.github.techstreet.dfscript.script.conditions.ScriptBuiltinCondition;
 import io.github.techstreet.dfscript.script.conditions.ScriptConditionType;
 import io.github.techstreet.dfscript.script.event.ScriptHeader;
 import io.github.techstreet.dfscript.script.execution.ScriptActionContext;
-import io.github.techstreet.dfscript.script.execution.ScriptPosStackElement;
 import io.github.techstreet.dfscript.script.execution.ScriptTask;
 import io.github.techstreet.dfscript.script.render.ScriptPartRender;
 import io.github.techstreet.dfscript.script.repetitions.ScriptBuiltinRepetition;
@@ -33,7 +29,6 @@ import java.awt.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class ScriptSnippet extends ArrayList<ScriptPart> {
     boolean hidden = false;
@@ -50,9 +45,6 @@ public class ScriptSnippet extends ArrayList<ScriptPart> {
         ScriptSnippet thisSnippet = this;
         panel.add(new CButton(3, y, 2, 8, "", () -> {
             thisSnippet.hidden = !thisSnippet.hidden;
-            if(DFScript.MC.currentScreen instanceof ScriptEditScreen e) {
-                e.reload();
-            }
         }) {
             @Override
             public void render(DrawContext context, int mouseX, int mouseY, float tickDelta) {
@@ -127,30 +119,6 @@ public class ScriptSnippet extends ArrayList<ScriptPart> {
                         if (getBounds().contains(x, y)) {
                             DFScript.MC.getSoundManager().play(PositionedSoundInstance.ambient(SoundEvents.UI_BUTTON_CLICK.value(), 1f, 1f));
 
-                            if (button == 0) {
-                                if(part instanceof ScriptParametrizedPart parametrizedPart)
-                                    DFScript.MC.setScreen(new ScriptEditPartScreen(parametrizedPart, script, header));
-                                if(part instanceof ScriptComment)
-                                    return false;
-                            } else {
-                                List<ContextMenuButton> contextMenu = new ArrayList<>();
-                                contextMenu.add(new ContextMenuButton("Insert Before", () -> {
-                                    DFScript.MC.setScreen(new ScriptPartCategoryScreen(script, thisSnippet, currentIndex));
-                                }, false));
-                                contextMenu.add(new ContextMenuButton("Insert After", () -> {
-                                    DFScript.MC.setScreen(new ScriptPartCategoryScreen(script, thisSnippet, currentIndex + 1));
-                                }, false));
-                                contextMenu.add(new ContextMenuButton("Delete", () -> {
-                                    thisSnippet.remove(currentIndex);
-                                }));
-                                contextMenu.addAll(part.getContextMenu());
-                                DFScript.MC.send(() -> {
-                                    if(DFScript.MC.currentScreen instanceof ScriptEditScreen editScreen)
-                                    {
-                                        editScreen.contextMenu((int) x, (int) y, contextMenu);
-                                    }
-                                });
-                            }
                             return true;
                         }
                         return false;
@@ -159,13 +127,6 @@ public class ScriptSnippet extends ArrayList<ScriptPart> {
             }
             index++;
         }
-
-        ScriptPartRender.createIndent(panel, indent, y, 8);
-        CButton add = new CButton((ScriptEditScreen.width-30)/2, y, 30, 8, "Add Part", () -> {
-            DFScript.MC.setScreen(new ScriptPartCategoryScreen(script, thisSnippet, thisSnippet.size()));
-        });
-
-        panel.add(add);
 
         return y+10;
     }

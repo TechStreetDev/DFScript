@@ -129,28 +129,28 @@ public enum ScriptRepetitionType {
 
         if(isDeprecated())
         {
-            lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("This action is deprecated!")
+            lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("This action is deprecated!")
                     .fillStyle(Style.EMPTY
                             .withColor(Formatting.RED)
                             .withItalic(false)))));
-            lore.add(NbtString.of(Text.Serializer.toJson(Text.literal("Use '" + deprecated.getName() + "'")
+            lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal("Use '" + deprecated.getName() + "'")
                     .fillStyle(Style.EMPTY
                             .withColor(Formatting.RED)
                             .withItalic(false)))));
         }
 
         for (String descriptionLine: description) {
-            lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(descriptionLine)
+            lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(descriptionLine)
                 .fillStyle(Style.EMPTY
                       .withColor(Formatting.GRAY)
                       .withItalic(false)))));
         }
 
-        lore.add(NbtString.of(Text.Serializer.toJson(Text.literal(""))));
+        lore.add(NbtString.of(Text.Serialization.toJsonString(Text.literal(""))));
 
         for (ScriptActionArgument arg : arguments) {
             for (Text txt : arg.text()) {
-                lore.add(NbtString.of(Text.Serializer.toJson(txt)));
+                lore.add(NbtString.of(Text.Serialization.toJsonString(txt)));
             }
         }
 

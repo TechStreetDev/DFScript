@@ -37,6 +37,22 @@ public class ScriptActionArgument {
         defaultValue = new ScriptUnknownValue();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isOptional() {
+        return optional;
+    }
+
+    public boolean isPlural() {
+        return plural;
+    }
+
+    public ScriptActionArgumentType getType() {
+        return type;
+    }
+
     public ScriptActionArgument optional(boolean optional) {
         this.optional = optional;
         this.rightOptional = false;
@@ -143,7 +159,7 @@ public class ScriptActionArgument {
         }
 
         if(optional() || plural()) {
-            lore.add(NbtString.of(Text.Serializer.toJson(
+            lore.add(NbtString.of(Text.Serialization.toJsonString(
                     Text.literal((optional() ? (plural() ? "Optional & " : "Optional") : "")
                                     + (plural() ? "Plural" : ""))
                             .fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY))
@@ -151,7 +167,7 @@ public class ScriptActionArgument {
         }
 
         if(!(defaultValue() instanceof ScriptUnknownValue)) {
-            lore.add(NbtString.of(Text.Serializer.toJson(
+            lore.add(NbtString.of(Text.Serialization.toJsonString(
                     Text.literal("Default: "+defaultValue().formatAsText())
                             .fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GRAY))
             )));
@@ -205,6 +221,14 @@ public class ScriptActionArgument {
             this.allowOptional = allowOptional;
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public Item getIcon() {
+            return icon;
+        }
+
         public MutableText text() {
             MutableText val = Text.literal(name);
             return val.fillStyle(Style.EMPTY.withItalic(false).withColor(Formatting.WHITE));
@@ -230,7 +254,7 @@ public class ScriptActionArgument {
             itemStack.setCustomName(Text.literal(name).setStyle(Style.EMPTY.withColor(Formatting.WHITE).withItalic(false)));
 
             NbtList lore = new NbtList();
-            lore.add(NbtString.of(Text.Serializer.toJson(text())));
+            lore.add(NbtString.of(Text.Serialization.toJsonString(text())));
             itemStack.getSubNbt("display").put("Lore", lore);
 
             return itemStack;

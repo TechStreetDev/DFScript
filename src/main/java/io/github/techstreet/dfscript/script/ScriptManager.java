@@ -7,7 +7,6 @@ import io.github.techstreet.dfscript.event.*;
 import io.github.techstreet.dfscript.event.system.Event;
 import io.github.techstreet.dfscript.event.system.EventManager;
 import io.github.techstreet.dfscript.loader.Loadable;
-import io.github.techstreet.dfscript.screen.script.ScriptAddScreen;
 import io.github.techstreet.dfscript.script.action.ScriptActionArgument;
 import io.github.techstreet.dfscript.script.action.ScriptActionArgumentList;
 import io.github.techstreet.dfscript.script.action.ScriptBuiltinAction;
@@ -21,7 +20,6 @@ import io.github.techstreet.dfscript.script.event.*;
 import io.github.techstreet.dfscript.script.options.ScriptNamedOption;
 import io.github.techstreet.dfscript.script.repetitions.ScriptBuiltinRepetition;
 import io.github.techstreet.dfscript.script.repetitions.ScriptWhile;
-import io.github.techstreet.dfscript.script.util.ScriptValueJson;
 import io.github.techstreet.dfscript.script.values.*;
 import io.github.techstreet.dfscript.util.FileUtil;
 import io.github.techstreet.dfscript.util.chat.ChatType;
@@ -136,21 +134,6 @@ public class ScriptManager implements Loadable {
         } catch (Exception err) {
             LOGGER.error("Unable to listen for new scripts", err);
         }
-
-        final int[] tick = {0};
-        new Thread(ScriptAddScreen::getScripts).start();
-        lastServerUpdate = System.currentTimeMillis() / 1000;
-
-        EventManager.getInstance().register(TickEvent.class, event -> {
-            tick[0] += 1;
-
-            if (tick[0] >= 100) {
-                tick[0] = 0;
-
-                new Thread(ScriptAddScreen::getScripts).start();
-                lastServerUpdate = System.currentTimeMillis() / 1000;
-            }
-        });
     }
 
     private void unloadScript(File file) {
