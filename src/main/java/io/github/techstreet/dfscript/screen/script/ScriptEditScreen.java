@@ -2,7 +2,6 @@ package io.github.techstreet.dfscript.screen.script;
 
 import io.github.techstreet.dfscript.DFScript;
 import io.github.techstreet.dfscript.screen.CReloadableScreen;
-import io.github.techstreet.dfscript.screen.CScreen;
 import io.github.techstreet.dfscript.screen.ContextMenuButton;
 import io.github.techstreet.dfscript.screen.widget.*;
 import io.github.techstreet.dfscript.script.Script;
@@ -12,8 +11,8 @@ import io.github.techstreet.dfscript.script.event.ScriptFunction;
 import io.github.techstreet.dfscript.script.event.ScriptHeader;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -57,7 +56,7 @@ public class ScriptEditScreen extends CReloadableScreen {
         panel.add(name);
 
         CButton settings = new CTexturedButton(120-8, y, 8, 8, DFScript.MOD_ID + ":settings.png", DFScript.MOD_ID + ":settings_highlight.png", () -> {
-            DFScript.MC.setScreen(new ScriptSettingsScreen(this.script, true));
+            changeScreen(new ScriptSettingsScreen(this.script, true));
         });
         panel.add(settings);
 
@@ -86,10 +85,10 @@ public class ScriptEditScreen extends CReloadableScreen {
 
                         if (button != 0) {
                             CButton insertBefore = new CButton((int) x, (int) y, 40, 8, "Insert Before", () -> {
-                                DFScript.MC.setScreen(new ScriptHeaderCategoryScreen(script, currentIndex));
+                                changeScreen(new ScriptHeaderCategoryScreen(script, currentIndex));
                             });
                             CButton insertAfter = new CButton((int) x, (int) y+8, 40, 8, "Insert After", () -> {
-                                DFScript.MC.setScreen(new ScriptHeaderCategoryScreen(script, currentIndex + 1));
+                                changeScreen(new ScriptHeaderCategoryScreen(script, currentIndex + 1));
                             });
                             CButton delete = new CButton((int) x, (int) y+16, 40, 8, "Delete", () -> {
                                 script.getHeaders().remove(currentIndex);
@@ -109,7 +108,7 @@ public class ScriptEditScreen extends CReloadableScreen {
                         }
                         else {
                             if(header instanceof ScriptFunction f) {
-                                DFScript.MC.setScreen(new ScriptEditFunctionScreen(f, script));
+                                changeScreen(new ScriptEditFunctionScreen(f, script));
                             }
                         }
                         return true;
@@ -121,12 +120,18 @@ public class ScriptEditScreen extends CReloadableScreen {
         }
 
         CButton add = new CButton(37, y, 46, 8, "Add Header", () -> {
-            DFScript.MC.setScreen(new ScriptHeaderCategoryScreen(script, script.getHeaders().size()));
+            changeScreen(new ScriptHeaderCategoryScreen(script, script.getHeaders().size()));
         });
 
         panel.add(add);
 
         panel.setScroll(scroll);
+    }
+
+    @Override
+    public void changeScreen(Screen screen) {
+        scroll = panel.getScroll();
+        DFScript.MC.setScreen(screen);
     }
 
     public void createIndent(int indent, int y)

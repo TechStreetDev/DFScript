@@ -10,7 +10,6 @@ import io.github.techstreet.dfscript.script.options.ScriptOption;
 import io.github.techstreet.dfscript.script.options.ScriptOptionEnum;
 import io.github.techstreet.dfscript.util.chat.ChatUtil;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
@@ -19,7 +18,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ScriptAddSettingSubtypeScreen extends CScreen {
 
@@ -33,7 +31,7 @@ public class ScriptAddSettingSubtypeScreen extends CScreen {
 
     private int optionPos;
 
-    private List<ScriptOptionEnum> subtypes;
+    private final List<ScriptOptionEnum> subtypes;
 
     static {
         primitiveTypes = Arrays.stream(ScriptOptionEnum.values()).filter(c -> c.getExtraTypes() == 0).toList();

@@ -9,7 +9,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,6 +22,10 @@ public class CScreen extends Screen {
         this.width = width;
         this.height = height;
 //        DFScript.MC.keyboard.setRepeatEvents(true);
+    }
+
+    public void changeScreen(Screen screen) {
+        DFScript.MC.setScreen(screen);
     }
 
     @Override
@@ -173,5 +176,14 @@ public class CScreen extends Screen {
         }
 
         return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+    }
+
+    public static CScreen getCurrent() {
+        Screen current = DFScript.MC.currentScreen;
+
+        if(current instanceof CScreen c) {
+            return c;
+        }
+        return null;
     }
 }

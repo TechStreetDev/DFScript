@@ -1,12 +1,10 @@
 package io.github.techstreet.dfscript.script.values;
 
-import io.github.techstreet.dfscript.script.values.ScriptUnknownValue;
-import io.github.techstreet.dfscript.script.values.ScriptValue;
+import com.google.gson.*;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ScriptVariable extends ScriptValue {
     private ScriptValue value;
@@ -22,6 +20,11 @@ public class ScriptVariable extends ScriptValue {
     @Override
     public ScriptValue get() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return asText();
     }
 
     public void set(ScriptValue value) {
@@ -61,5 +64,27 @@ public class ScriptVariable extends ScriptValue {
     @Override
     public boolean valueEquals(ScriptValue other) {
         return get().valueEquals(other);
+    }
+
+    @Override
+    public ScriptValue getCompareValue() {
+        return get().getCompareValue();
+    }
+
+    @Override
+    public int compare(ScriptValue other) {
+        return get().compare(other);
+    }
+
+    @Override
+    public String formatAsText() {
+        return get().formatAsText();
+    }
+
+    public static class Serializer implements JsonSerializer<ScriptVariable> {
+        @Override
+        public JsonElement serialize(ScriptVariable scriptValue, Type type, JsonSerializationContext context) {
+            return context.serialize(scriptValue.get());
+        }
     }
 }

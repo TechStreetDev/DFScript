@@ -92,9 +92,11 @@ public class ScriptSettingsScreen extends CScreen {
 
                         if (button != 0) {
                             CButton insertBefore = new CButton((int) x, (int) y, 40, 8, "Insert Before", () -> {
+                                scroll = panel.getScroll();
                                 DFScript.MC.setScreen(new ScriptAddSettingScreen(script, finalIndex));
                             });
                             CButton insertAfter = new CButton((int) x, (int) y+8, 40, 8, "Insert After", () -> {
+                                scroll = panel.getScroll();
                                 DFScript.MC.setScreen(new ScriptAddSettingScreen(script, finalIndex + 1));
                             });
                             CButton delete = new CButton((int) x, (int) y+16, 40, 8, "Delete", () -> {
@@ -107,6 +109,7 @@ public class ScriptSettingsScreen extends CScreen {
                         }
                         else
                         {
+                            scroll = panel.getScroll();
                             DFScript.MC.setScreen(new ScriptEditSettingScreen(script, option));
                         }
                         return true;
@@ -126,6 +129,7 @@ public class ScriptSettingsScreen extends CScreen {
         if(owned)
         {
             CButton add = new CButton(37, y, 48, 9, "Add Option", () -> {
+                scroll = panel.getScroll();
                 DFScript.MC.setScreen(new ScriptAddSettingScreen(script, script.getOptions().size()));
             });
             panel.add(add);

@@ -6,8 +6,6 @@ import io.github.techstreet.dfscript.screen.widget.CItem;
 import io.github.techstreet.dfscript.screen.widget.CScrollPanel;
 import io.github.techstreet.dfscript.script.Script;
 import io.github.techstreet.dfscript.script.ScriptParametrizedPart;
-import io.github.techstreet.dfscript.script.ScriptPart;
-import io.github.techstreet.dfscript.script.action.ScriptAction;
 import io.github.techstreet.dfscript.script.argument.ScriptConfigArgument;
 import io.github.techstreet.dfscript.script.event.ScriptHeader;
 import io.github.techstreet.dfscript.script.options.ScriptNamedOption;
@@ -19,8 +17,8 @@ public class ScriptAddConfigValueScreen extends CScreen {
     private final ScriptParametrizedPart action;
     private final int insertIndex;
 
-    private static int WIDTH = 200;
-    private static int HEIGHT = 94;
+    private static final int WIDTH = 200;
+    private static final int HEIGHT = 94;
 
     public ScriptAddConfigValueScreen(ScriptParametrizedPart action, Script script, int insertIndex, ScriptHeader header, String overwrite) {
         super(WIDTH, HEIGHT);

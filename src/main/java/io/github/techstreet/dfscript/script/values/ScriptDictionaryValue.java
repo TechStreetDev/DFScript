@@ -3,9 +3,7 @@ package io.github.techstreet.dfscript.script.values;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ScriptDictionaryValue extends ScriptValue {
@@ -89,7 +87,7 @@ public class ScriptDictionaryValue extends ScriptValue {
                 dictObj.add(key, context.serialize(dict.get(key)));
             }
             JsonObject obj = new JsonObject();
-            obj.add("dict", obj);
+            obj.add("dict", dictObj);
             obj.addProperty("___objectType", "dict");
             return obj;
         }
